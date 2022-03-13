@@ -21,7 +21,9 @@ namespace Uss
             leftline.Drow();
             downLine.Drow();
 
-
+            Point p = new Point(10, 7, '*');
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
+            snake.Drow();
             Console.ReadLine ();    
         }
 
