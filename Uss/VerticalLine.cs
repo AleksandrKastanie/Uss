@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Uss
 {
-    internal class VerticalLine
+    internal class VerticalLine : Figure
     {
-        List<Point> plist;
-
         public VerticalLine(int yUp, int yDown, int x, char sym)
         {
             plist = new List<Point>();
@@ -17,14 +15,6 @@ namespace Uss
             {
                 Point p = new Point(x, y, sym);
                 plist.Add(p);
-            }
-        }
-
-        public void Drow()
-        {
-            foreach (Point p in plist)
-            {
-                p.Draw();
             }
         }
     }
