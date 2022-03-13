@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Uss
@@ -24,6 +25,17 @@ namespace Uss
             Point p = new Point(10, 7, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Drow();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
+
             Console.ReadLine ();    
         }
 
