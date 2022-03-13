@@ -10,18 +10,17 @@ namespace Uss
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point();
-            p1.x = 1;
-            p1.y = 3;
-            p1.sym = '*';
-            p1.Draw(); 
+            Console.SetBufferSize(120, 30);
 
-            Point p2 = new Point(); 
-            p2.x = 4;
-            p2.y = 5;   
-            p2.sym = '#';
-            p2.Draw();
-            
+            HorizontalLine rightline = new HorizontalLine(0,118,0,'+');
+            VerticalLine upLine = new VerticalLine(0, 29, 0, '+');
+            HorizontalLine leftline = new HorizontalLine(0, 118, 29, '+');
+            VerticalLine downLine = new VerticalLine(0, 29, 118, '+');
+            rightline.Drow();
+            upLine.Drow();
+            leftline.Drow();
+            downLine.Drow();
+
 
             Console.ReadLine ();    
         }
