@@ -17,16 +17,34 @@ namespace Uss
             VerticalLine upLine = new VerticalLine(0, 29, 0, '+');
             HorizontalLine leftline = new HorizontalLine(0, 118, 29, '+');
             VerticalLine downLine = new VerticalLine(0, 29, 118, '+');
-            rightline.Drow();
-            upLine.Drow();
-            leftline.Drow();
-            downLine.Drow();
+            rightline.Draw();
+            upLine.Draw();
+            leftline.Draw();
+            downLine.Draw();
 
             Point p = new Point(10, 7, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
-            snake.Drow();
+            snake.Draw();
+
+            FoodCreator foodCreator = new FoodCreator(120, 30, '¤');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
+
+
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+                Thread.Sleep(100);
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();

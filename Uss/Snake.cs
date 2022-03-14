@@ -49,6 +49,19 @@ namespace Uss
             else if (key == ConsoleKey.DownArrow)
                 direction = Direction.DOWN;
         }
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            //if (head.x == food.x && head.y == food.y)
+            {
+                food.sym = head.sym;
+                plist.Add(head);
+                return true;
+            }
+            else
+                return false;
+        }
     }
     
     
