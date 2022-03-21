@@ -60,9 +60,9 @@ namespace Uss
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.SetCursorPosition(xOffset, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
-			WriteText("Game Over!", xOffset + 1, yOffset++);
+			WriteText("GAME OVER!", xOffset + 10, yOffset++);
 			yOffset++;
-			WriteText("Автор: Кастанье Александр", xOffset + 2, yOffset++);
+			WriteText("Developer: Aleksandr Kastanie", xOffset , yOffset++);
 			WriteText("============================", xOffset, yOffset++);
 		}
 
