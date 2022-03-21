@@ -11,23 +11,23 @@ namespace Uss
 	{
 		static void Main(string[] args)
 		{
-			Console.SetBufferSize(120, 30);
+			Console.SetBufferSize(120, 30); // задает рамку для нашей игры (меньше значения не работают) 
 
-			Walls walls = new Walls(120, 30);
+			Walls walls = new Walls(120, 30); // Создает стены для змейки по размерам рамки (меньше значения не работают) 
 			walls.Draw();
 
 						
 			Point p = new Point(4, 5, '*');
-			Snake snake = new Snake(p, 4, Direction.RIGHT);
+			Snake snake = new Snake(p, 4, Direction.RIGHT);//При запуске игры змейка начинает движение вправо из указаной точки
 			snake.Draw();
 
-			FoodCreator foodCreator = new FoodCreator(120, 30, '$');
+			FoodCreator foodCreator = new FoodCreator(120, 30, '$'); //Создание объекта еда с условиями длина,ширина карты и символ как еда будет выглядеть
 			Point food = foodCreator.CreateFood();
 			food.Draw();
 
 			while (true)
 			{
-				if (walls.IsHit(snake) || snake.IsHitTail())
+				if (walls.IsHit(snake) || snake.IsHitTail())//если змея врезается в стенку или хвост то программа прерывается
 				{
 					break;
 				}
@@ -41,7 +41,7 @@ namespace Uss
 					snake.Move();
 				}
 
-				Thread.Sleep(100);
+				Thread.Sleep(100);//Задержка 100 милисекунд, можно поставить значения и меньше 
 				if (Console.KeyAvailable)
 				{
 					ConsoleKeyInfo key = Console.ReadKey();
@@ -53,14 +53,14 @@ namespace Uss
 		}
 
 
-		static void WriteGameOver()
+		static void WriteGameOver() // После прерывания работы программы выдает рамку с Game Over! и автором проекта 
 		{
 			int xOffset = 25;
 			int yOffset = 8;
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.SetCursorPosition(xOffset, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
-			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+			WriteText("Game Over!", xOffset + 1, yOffset++);
 			yOffset++;
 			WriteText("Автор: Кастанье Александр", xOffset + 2, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
