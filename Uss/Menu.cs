@@ -13,7 +13,8 @@ namespace Uss
     internal class Menu
     {
         public void MainMenu()
-        { 
+        {
+            Clear();  
             bool choose = false;
             SetWindowSize(120,60) ;
             do
@@ -43,6 +44,13 @@ namespace Uss
 \_/          \_/\_/  \|\_/   \____/  
                                      ");
                 Console.WriteLine(@"
+ ____            ____  _____ ____  _     _   _____  ____ 
+/  __\          /  __\/  __// ___\/ \ /\/ \ /__ __\/ ___\
+|  \/|  _____   |  \/||  \  |    \| | ||| |   / \  |    \
+|    /  \____\  |    /|  /_ \___ || \_/|| |_/\| |  \___ |
+\_/\_\          \_/\_\\____\\____/\____/\____/\_/  \____/
+                                                         ");
+                Console.WriteLine(@"
  _____           ________  _ _  _____ 
 /  __/          /  __/\  \/// \/__ __\
 |  \    _____   |  \   \  / | |  / \  
@@ -67,6 +75,11 @@ namespace Uss
                         Clear(); 
                         Exit();    
                         break;
+                    case ConsoleKey.R:
+                        Results();
+                        choose = true;
+                        break;
+
                 }
                 Clear();
             } while (choose != true);
@@ -117,6 +130,17 @@ __   __             ___       _
                 Clear();
                 MainMenu();
             }
+        }
+        void Results()
+        {
+            Console.Clear();
+            StreamReader file = new StreamReader(@"..\..\Score.txt");
+            string flop = file.ReadToEnd();
+            Console.WriteLine(flop);
+            file.Close();
+            Console.ReadKey(true);
+            Console.Clear();
+            MainMenu();
         }
     }
 }
