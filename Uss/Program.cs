@@ -17,6 +17,7 @@ namespace Uss
 
 
 			{
+				Others other = new Others();
 				int score = 0; 
 				Console.ForegroundColor = ConsoleColor.Green;
 				Menu menu = new Menu();
@@ -68,59 +69,12 @@ namespace Uss
                     {
 						Thread.Sleep(50);
 					}
-					Score(score);
+					other.Score(score);
 				}
 				Clear();
-				WriteGameOver(score);
+				other.WriteGameOver(score);
 				Console.ReadLine();
 			}
-		}
-
-
-		static void WriteGameOver(int a) // После прерывания работы программы выдает рамку с Game Over! и автором проекта 
-		{
-			int xOffset = 5;
-			int yOffset = 8;
-			string name;
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.SetCursorPosition(xOffset, yOffset++);
-			Walls walls = new Walls(50, 30); // Создает стены для змейки по размерам рамки (меньше значения не работают) 
-			walls.Draw();
-			WriteText("============================", xOffset, yOffset++);
-			WriteText("GAME OVER!", xOffset + 10, yOffset++);
-			yOffset++;
-			WriteName("Sisestage teie nimi: ", xOffset , yOffset++);
-			name = Console.ReadLine();
-			WriteText("Score: " + a, xOffset , yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-            if (a>0)
-            {
-				StreamWriter to_file = new StreamWriter(@"..\..\Score.txt", true);
-				to_file.WriteLine(name + " --> " + a);
-				to_file.Close();
-			}
-		}
-
-		static void WriteText(String text, int xOffset, int yOffset)
-		{
-			Console.SetCursorPosition(xOffset, yOffset);
-			Console.WriteLine(text);
-		}
-		static void Score(int b)
-        {
-			Console.ForegroundColor = ConsoleColor.White;
-			int xOffset = 60;
-			int yOffset = 0;
-			Console.SetCursorPosition(xOffset, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-			WriteText("Score: "+ b, xOffset + 10, yOffset++);
-			yOffset++;
-			WriteText("============================", xOffset, yOffset++);
-		}
-		static void WriteName(String text, int xOffset, int yOffset)
-		{
-			Console.SetCursorPosition(xOffset, yOffset);
-			Console.Write(text);
 		}
 	}
 }
